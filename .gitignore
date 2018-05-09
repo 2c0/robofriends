@@ -1,14 +1,8 @@
 node_modules
 .vscode# See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
-
-# testing
-/coverage
-
-# production
-/build
+# public
+public
 
 # misc
 .DS_Store
