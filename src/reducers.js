@@ -1,15 +1,15 @@
-import {CHANGE_SERCHFIELD} from "./constants";
-import {searchField} from "./actions";
+import {CHANGE_SEARCH_FIELD} from "./constants";
+import {SearchField} from "./actions";
 
 const initialState = {
-    searchField = '';
-}
+  searchField: ''
+};
 
-export const searchRobots (state=initialState, action={} ) => {
-    switch (action.type) {
-        case: CHANGE_SERCHFIELD:
-            return Object.assign({}, state, searchField: action.payload);
-        default:
-            return state;
-    }
-}
+export const searchRobots = (state = initialState, action = {}) => {
+  switch (action.type) {
+    case CHANGE_SEARCH_FIELD:
+      return Object.assign({}, state, {searchField: action.payload});
+    default:
+      return state;
+  }
+};
