@@ -22,29 +22,24 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
     constructor() {
-        super()
+        super();
         this.state = {
-            robots: [],
-            searchfield: ''
+            robots: []
         }
 
     }
 
     componentDidMount() {
-        console.log(this.props);
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(users => { this.setState({ robots: users }) });
     }
 
-    onSearchChange = (event) => {
-        this.setState({ searchfield: event.target.value })
-    }
-
     render() {
-        const { robots, searchfield } = this.state;
+        const { robots } = this.state;
+        const { searchField, onSearchChange } = this.props;
         const filteredRobots = robots.filter(robot => {
-            return robot.name.toLowerCase().includes(searchfield.toLowerCase());
+            return robot.name.toLowerCase().includes(searchField.toLowerCase());
         })
 
         return !robots.length ?
@@ -53,7 +48,7 @@ class App extends Component {
             (
                 <div className='tc'>
                     <h1 className='f1'>Robofriends</h1>
-                    <Searchbox searchChange={this.onSearchChange} />
+                    <Searchbox searchChange={onSearchChange} />
                     <Scroll>
                         <CardList robots={filteredRobots} />
                     </Scroll>
